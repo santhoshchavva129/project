@@ -1,0 +1,163 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th{ 
+        color:#fff;
+            }
+</style>
+
+<table class="table table-striped">
+    <tr  
+     class="bg-info">
+        <th>Country</th>
+        <th>Captials</th>
+        <th>Currency</th>
+        <th>Language</th>
+        <th>Religioin</tr>
+          <tbody id="myTable">
+        
+            <body>
+                <section class="container p-6 search-section">
+                    <h1>Country name </h1>
+                    <input class="form-control search-bar" type="text" placeholder="Enter the country name">
+                    <button id="search-btn" class="btn btn-primary">search</button>
+                    <h1>Captial name </h1>
+                    <input class="form-control search-bar" type="text" placeholder="Enter the Captial name">
+                    <button id="search-btn" class="btn btn-primary">search</button>
+                </section>
+                <section class="result"></section>
+        
+            <!-- javascript -->
+            <script src="table.js"></script>
+        </body>  
+      <p>Click the button to sort the table alphabetically, by name:</p>
+      <p><button onclick="sortTable()">Sort</button></p>
+  
+      </tbody>
+</table>
+
+<script>
+	var myArray = [
+	      {'Country':'azerbaijan', 'Captial':'baku','Currency':'manat','Language':'azerbaijani','Religion':'Islam',},
+        {'Country':'bahamas	', 'Captial':'nassau','Currency':'bahamian dollar','Language':'english','Religion':'Christianity',},
+        {'Country':'Bahrain', 'Captial':'manama','Currency':'Bahraini dinar','Language':'arabic','Religion':'Islam',},
+        {'Country':'Bangladesh', 'Captial':'dhaka','Currency':'taka','Language':'bangla','Religion':'Islam',},
+        {'Country':'barbados', 'Captial':'bridgetown','Currency':'barbadian dollar','Language':'english','Religion':'Christianity',},
+        {'Country':'Belarus', 'Captial':'minsk','Currency':'Belarusian','Language':'russian','Religion':'Christianity',},
+        {'Country':'belgium', 'Captial':'brussels','Currency':'euro','Language':'dutch','Religion':'Secular',},
+        {'Country':'Belize', 'Captial':'Belmopan','Currency':'belize dollar','Language':'english','Religion':'Christianity',},    
+        {'Country':'Benin', 'Captial':'porto-novo','Currency':'west african','Language':'french','Religion':'Christianity',},
+        {'Country':'Bhutan', 'Captial':'Thimphu','Currency':'Ngyltrum','Language':'dzongkha','Religion':'Buddism',},
+	 
+	]
+    
+
+	buildTable(myArray)
+
+
+
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].Country}</td>
+							<td>${data[i].Captial}</td>
+							<td>${data[i].Currency}</td>
+                            <td>${data[i].Language}</td>
+                            <td>${data[i].Religion}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>
+<script>
+  function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[0];
+        y = rows[i + 1].getElementsByTagName("TD")[0];
+        //check if the two rows should switch place:
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+  </script>
+  
+  </body>
+  </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+</style>
+
+</head>
+<body>
+
+    <a href="project3.html">&laquo; Previous</a>
+
+ <a href="project6.html">Next &raquo;</a>
+
+  
+</body>
+</html> 
+
+<!DOCTYPE html>
+<html>
+<body>
